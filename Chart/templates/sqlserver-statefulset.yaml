@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  annotations: {}
+  labels:
+    app: sqlserver
+  name: sqlserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sqlserver
+  serviceName: sqlserver
+  template:
+    metadata:
+      annotations: {}
+      labels:
+        app: sqlserver
+    spec:
+      containers:
+      - args: []
+        envFrom:
+        - configMapRef:
+            name: sqlserver
+        - secretRef:
+            name: sqlserver
+        image: '{{ .Values.images.sqlserver }}'
+        imagePullPolicy: IfNotPresent
+        name: sqlserver
+        ports:
+        - containerPort: 1433
+          name: tcp
+        volumeMounts:
+        - mountPath: /var/opt/mssql
+          name: calloutqueue-apphost-aacd00fd31-sqlserver-data
+      terminationGracePeriodSeconds: 180
+  volumeClaimTemplates:
+  - metadata:
+      name: calloutqueue-apphost-aacd00fd31-sqlserver-data
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi

@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  ASPIRE_ENDPOINT: http://localhost:19005
+  ASPIRE_INSECURE: "true"
+  PROMETHEUS_ENDPOINT: http://Prometheus:9090/api/v1/otlp
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://aspire-dashboard:18889
+  OTEL_SERVICE_NAME: OtelCollector
+kind: ConfigMap
+metadata:
+  annotations: {}
+  labels:
+    app: otelcollector
+  name: otelcollector

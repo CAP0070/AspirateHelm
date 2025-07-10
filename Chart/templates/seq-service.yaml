@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations: {}
+  labels:
+    app: seq
+  name: seq
+spec:
+  ports:
+  - name: seq
+    port: 80
+    targetPort: 5341
+  selector:
+    app: seq
+  type: ClusterIP

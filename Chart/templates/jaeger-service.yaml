@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations: {}
+  labels:
+    app: jaeger
+  name: jaeger
+spec:
+  ports:
+  - name: jaeger-ui
+    port: 16686
+    targetPort: 0
+  - name: grpc
+    port: 4317
+    targetPort: 0
+  selector:
+    app: jaeger
+  type: ClusterIP

@@ -1,0 +1,13 @@
+images:
+  sqlserver: mcr.microsoft.com/mssql/server:2022-latest
+  redis: docker.io/library/redis:7.4
+  schemaregistry: confluentinc/cp-schema-registry:latest
+  kafka: docker.io/confluentinc/confluent-local:7.9.0
+  seq: datalust/seq:latest
+  prometheus: prom/prometheus:v3.2.1
+  grafana: grafana/grafana:latest
+  jaeger: jaegertracing/all-in-one:1.66.0
+  otelcollector: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.123.0
+  calloutqueuebe: calloutqueuebe:latest
+  k6: docker.io/grafana/k6:0.57.0
+  aspiredashboard: mcr.microsoft.com/dotnet/aspire-dashboard:9.0

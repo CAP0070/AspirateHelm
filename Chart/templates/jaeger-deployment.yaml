@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations: {}
+  labels:
+    app: jaeger
+  name: jaeger
+spec:
+  minReadySeconds: 60
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jaeger
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations: {}
+      labels:
+        app: jaeger
+    spec:
+      containers:
+      - args:
+        - --memory.max-traces=25000
+        - --query.base-path=/jaeger/ui
+        - --prometheus.server-url=http://prometheus:9090
+        - --prometheus.query.normalize-calls=true
+        - --prometheus.query.normalize-duration=true
+        envFrom:
+        - configMapRef:
+            name: jaeger
+        image: '{{ .Values.images.jaeger }}'
+        imagePullPolicy: IfNotPresent
+        name: jaeger
+        ports:
+        - containerPort: 16686
+          name: jaeger-ui
+        - containerPort: 4317
+          name: grpc
+      terminationGracePeriodSeconds: 180
