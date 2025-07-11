@@ -6,11 +6,10 @@ metadata:
     app: schemaregistry
   name: schemaregistry
 spec:
-  type: {{ .Values.services.schemaregistry.type }}
+  type: ClusterIP
   ports:
     - name: http
       port: 8081
       targetPort: 8081
-      nodePort: {{ .Values.services.schemaregistry.nodePort }}
   selector:
     app: schemaregistry

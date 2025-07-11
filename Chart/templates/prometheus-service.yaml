@@ -6,11 +6,10 @@ metadata:
     app: prometheus
   name: prometheus
 spec:
-  type: {{ .Values.services.prometheus.type }}
+  type: ClusterIP
   ports:
   - name: http
     port: 9090
     targetPort: 9090
-    nodePort: {{ .Values.services.prometheus.nodePort }}
   selector:
     app: prometheus

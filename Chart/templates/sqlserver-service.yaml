@@ -6,11 +6,10 @@ metadata:
     app: sqlserver
   name: sqlserver
 spec:
-  type: {{ .Values.services.sqlserver.type }}
+  type: ClusterIP
   ports:
     - name: sqlserver
       port: 1433
       targetPort: 1433
-      nodePort: {{ .Values.services.sqlserver.nodePort }}
   selector:
     app: sqlserver

@@ -6,11 +6,10 @@ metadata:
     app: rolloutfe
   name: rolloutfe
 spec:
-  type: {{ .Values.services.rolloutfe.type }}
+  type: ClusterIP
   ports:
   - name: http
     port: 8980
     targetPort: 8980
-    nodePort: {{ .Values.services.rolloutfe.nodePort }}
   selector:
     app: rolloutfe

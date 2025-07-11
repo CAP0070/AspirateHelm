@@ -6,12 +6,11 @@ metadata:
     app: calloutqueuebe
   name: calloutqueuebe
 spec:
-  type: {{ .Values.services.calloutqueuebe.type }}
+  type: ClusterIP
   ports:
     - name: http
       port: 5135
       targetPort: 5135
-      nodePort: {{ .Values.services.calloutqueuebe.nodePort }}
     - name: https
       port: 443
       targetPort: 7136

@@ -6,11 +6,10 @@ metadata:
     app: redis
   name: redis
 spec:
-  type: {{ .Values.services.redis.type }}
+  type: ClusterIP
   ports:
     - name: redis
       port: 6379
       targetPort: 6379
-      nodePort: {{ .Values.services.redis.nodePort }}
   selector:
     app: redis

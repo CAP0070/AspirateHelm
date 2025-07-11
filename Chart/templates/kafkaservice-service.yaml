@@ -6,11 +6,10 @@ metadata:
     app: kafkaservice
   name: kafkaservice
 spec:
-  type: {{ .Values.services.kafkaservice.type }}
+  type: ClusterIP
   ports:
     - name: kafka
       port: 9092
       targetPort: 9092
-      nodePort: {{ .Values.services.kafkaservice.nodePort }}
   selector:
     app: kafkaservice

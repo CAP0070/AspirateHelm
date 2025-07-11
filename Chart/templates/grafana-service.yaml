@@ -6,11 +6,10 @@ metadata:
     app: grafana
   name: grafana
 spec:
-  type: {{ .Values.services.grafana.type }}
+  type: ClusterIP
   ports:
   - name: http
     port: 3000
     targetPort: 3000
-    nodePort: {{ .Values.services.grafana.nodePort }}
   selector:
     app: grafana
