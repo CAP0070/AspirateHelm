@@ -18,6 +18,9 @@ services:
   calloutqueuebe:
     type: NodePort
     nodePort: 31315
+  rolloutfe:
+    type: NodePort
+    nodePort: 31320
   akhq:
     type: NodePort
     nodePort: 31316
@@ -30,9 +33,6 @@ services:
   jaeger:
     type: NodePort
     nodePort: 31319
-  rolloutfe:
-    type: NodePort
-    nodePort: 31320
   otelcollector:
     type: NodePort
     grpcNodePort: 31321
