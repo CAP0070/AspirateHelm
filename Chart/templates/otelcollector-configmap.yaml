@@ -1,13 +1,18 @@
 apiVersion: v1
-data:
-  ASPIRE_ENDPOINT: http://localhost:19005
-  ASPIRE_INSECURE: "true"
-  PROMETHEUS_ENDPOINT: http://Prometheus:9090/api/v1/otlp
-  OTEL_EXPORTER_OTLP_ENDPOINT: http://aspire-dashboard:18889
-  OTEL_SERVICE_NAME: OtelCollector
 kind: ConfigMap
 metadata:
-  annotations: {}
+  name: otelcollector
   labels:
     app: otelcollector
-  name: otelcollector
+  namespace: default
+
+data:
+  otelcol-config.yml: |
+    # ... existing code ...
+    # The full content of otelcol-config.yml will be inserted here.
+  otelcol-aspire.yml: |
+    # ... existing code ...
+    # The full content of otelcol-aspire.yml will be inserted here.
+  otelcol-config-extras.yml: |
+    # ... existing code ...
+    # The full content of otelcol-config-extras.yml will be inserted here.

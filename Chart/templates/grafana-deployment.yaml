@@ -30,4 +30,57 @@ spec:
         ports:
         - containerPort: 3000
           name: http
+        volumeMounts:
+        - name: grafana-config
+          mountPath: /etc/grafana/grafana.ini
+          subPath: grafana.ini
+        - name: grafana-config
+          mountPath: /etc/grafana/config_grafana.ini
+          subPath: config_grafana.ini
+        - name: grafana-config
+          mountPath: /etc/grafana/provisioning/datasources/default.yaml
+          subPath: provisioning-datasources-default.yaml
+        - name: grafana-config
+          mountPath: /etc/grafana/provisioning/datasources/jaeger.yaml
+          subPath: provisioning-datasources-jaeger.yaml
+        - name: grafana-config
+          mountPath: /etc/grafana/provisioning/datasources/opensearch.yaml
+          subPath: provisioning-datasources-opensearch.yaml
+        - name: grafana-config
+          mountPath: /etc/grafana/provisioning/dashboards/demo.yaml
+          subPath: provisioning-dashboards-demo.yaml
+        - name: grafana-config
+          mountPath: /etc/grafana/provisioning/dashboards/demo/demo-dashboard.json
+          subPath: provisioning-dashboards-demo-demo-dashboard.json
+        - name: grafana-config
+          mountPath: /etc/grafana/provisioning/dashboards/demo/aspnetcore_grafana_dashboard.json
+          subPath: provisioning-dashboards-demo-aspnetcore_grafana_dashboard.json
+        - name: grafana-config
+          mountPath: /etc/grafana/provisioning/dashboards/demo/ASPNET_Core Endpoint_grafana_dashboard.json
+          subPath: provisioning-dashboards-demo-aspnetcore_endpoint_grafana_dashboard.json
+        - name: grafana-config
+          mountPath: /etc/grafana/provisioning/dashboards/demo/app running on openshift.json
+          subPath: provisioning-dashboards-demo-app_running_on_openshift.json
+        - name: grafana-config
+          mountPath: /etc/grafana/provisioning/dashboards/demo/exemplars-dashboard.json
+          subPath: provisioning-dashboards-demo-exemplars-dashboard.json
+        - name: grafana-config
+          mountPath: /etc/grafana/provisioning/dashboards/demo/otel_grafana_dashboard.json
+          subPath: provisioning-dashboards-demo-otel_grafana_dashboard.json
+        - name: grafana-config
+          mountPath: /etc/grafana/provisioning/dashboards/demo/opentelemetry-collector_dashboard.json
+          subPath: provisioning-dashboards-demo-opentelemetry-collector_dashboard.json
+        - name: grafana-config
+          mountPath: /etc/grafana/provisioning/dashboards/demo/spanmetrics-dashboard.json
+          subPath: provisioning-dashboards-demo-spanmetrics-dashboard.json
+        - name: grafana-config
+          mountPath: /etc/grafana/dashboards/aspnetcore.json
+          subPath: dashboards-aspnetcore.json
+        - name: grafana-config
+          mountPath: /etc/grafana/dashboards/aspnetcore-endpoint.json
+          subPath: dashboards-aspnetcore-endpoint.json
+      volumes:
+      - name: grafana-config
+        configMap:
+          name: grafana
       terminationGracePeriodSeconds: 180

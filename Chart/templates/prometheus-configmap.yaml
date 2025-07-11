@@ -1,13 +1,12 @@
 apiVersion: v1
-data:
-  OTEL_EXPORTER_OTLP_ENDPOINT: http://aspire-dashboard:18889
-  OTEL_SERVICE_NAME: Prometheus
 kind: ConfigMap
 metadata:
-  annotations: {}
+  name: prometheus
   labels:
     app: prometheus
-  name: prometheus
+  namespace: default
+
 data:
-  prometheus-config.yaml: |-
-{{ .Files.Get "files/prometheus-config.yaml" | indent 4 }}
+  prometheus-config.yaml: |
+    # ... existing code ...
+    # The full content of prometheus-config.yaml will be inserted here.

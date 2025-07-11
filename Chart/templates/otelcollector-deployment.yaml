@@ -32,4 +32,18 @@ spec:
           name: grpc
         - containerPort: 4318
           name: http
+        volumeMounts:
+        - name: otelcollector-config
+          mountPath: /etc/otelcol/otelcol-config.yml
+          subPath: otelcol-config.yml
+        - name: otelcollector-config
+          mountPath: /etc/otelcol/otelcol-aspire.yml
+          subPath: otelcol-aspire.yml
+        - name: otelcollector-config
+          mountPath: /etc/otelcol/otelcol-config-extras.yml
+          subPath: otelcol-config-extras.yml
+      volumes:
+      - name: otelcollector-config
+        configMap:
+          name: otelcollector
       terminationGracePeriodSeconds: 180
