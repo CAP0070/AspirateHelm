@@ -7,7 +7,7 @@ metadata:
   name: calloutqueuebe
 spec:
   minReadySeconds: 60
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: calloutqueuebe
@@ -30,8 +30,8 @@ spec:
         imagePullPolicy: IfNotPresent
         name: calloutqueuebe
         ports:
-        - containerPort: 8080
+        - containerPort: 5135
           name: http
-        - containerPort: 8443
+        - containerPort: 7136
           name: https
       terminationGracePeriodSeconds: 180
