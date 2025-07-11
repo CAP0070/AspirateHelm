@@ -1,9 +1,9 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: strip-all
+  name: strip-schemaregistry
   namespace: argocd
 spec:
-  stripPrefixRegex:
-    regex:
-      - ^/[^/]+ 
+  stripPrefix:
+    prefixes:
+      - /schemaregistry 

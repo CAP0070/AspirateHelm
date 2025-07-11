@@ -1,0 +1,63 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: main-ingressroute
+  namespace: argocd
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`localhost`) && Path(`/`)
+      kind: Rule
+      services:
+        - name: rolloutfe
+          port: 8980
+    - match: Host(`localhost`) && PathPrefix(`/grafana`)
+      kind: Rule
+      services:
+        - name: grafana
+          port: 3000
+      middlewares:
+        - name: strip-grafana
+    - match: Host(`localhost`) && PathPrefix(`/prometheus`)
+      kind: Rule
+      services:
+        - name: prometheus
+          port: 9090
+      middlewares:
+        - name: strip-prometheus
+    - match: Host(`localhost`) && PathPrefix(`/akhq`)
+      kind: Rule
+      services:
+        - name: akhq
+          port: 9000
+      middlewares:
+        - name: strip-akhq
+    - match: Host(`localhost`) && PathPrefix(`/seq`)
+      kind: Rule
+      services:
+        - name: seq
+          port: 5341
+      middlewares:
+        - name: strip-seq
+    - match: Host(`localhost`) && PathPrefix(`/calloutqueuebe`)
+      kind: Rule
+      services:
+        - name: calloutqueuebe
+          port: 5135
+      middlewares:
+        - name: strip-calloutqueuebe
+    - match: Host(`localhost`) && PathPrefix(`/schemaregistry`)
+      kind: Rule
+      services:
+        - name: schemaregistry
+          port: 8081
+      middlewares:
+        - name: strip-schemaregistry
+    - match: Host(`localhost`) && PathPrefix(`/aspire-dashboard`)
+      kind: Rule
+      services:
+        - name: aspire-dashboard
+          port: 18888
+      middlewares:
+        - name: strip-aspire-dashboard 
