@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: akhq
+spec:
+  ports:
+  - name: http
+    port: 9000
+    targetPort: 8080
+    nodePort: 31316  # Optional: static NodePort for easier access
+  selector:
+    app: akhq
+  type: NodePort  

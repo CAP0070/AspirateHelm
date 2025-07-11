@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: akhq
+  name: akhq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: akhq
+  template:
+    metadata:
+      labels:
+        app: akhq
+    spec:
+      containers:
+      - env:
+        - name: AKHQ_CONNECTIONS_LOCAL_PROPERTIES_BOOTSTRAP_SERVERS
+          value: "KafkaService:9092"
+        - name: AKHQ_SCHEMA_REGISTRY_URL
+          value: "http://schemaregistry:8081"
+        - name: AKHQ_SECURITY_ENABLED
+          value: "false"         
+        - name: MICRONAUT_CONFIG_FILES
+          value: ""
+        image: '{{ .Values.images.akhq }}'
+        name: akhq
+        ports:
+        - containerPort: 8080
+          name: http
+        resources:
+          limits:
+            memory: 512Mi
+          requests:
+            cpu: 500m
+            memory: 512Mi
+      terminationGracePeriodSeconds: 30
