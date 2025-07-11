@@ -6,13 +6,15 @@ metadata:
     app: otelcollector
   name: otelcollector
 spec:
-  type: ClusterIP
+  type: {{ .Values.services.otelcollector.type }}
   ports:
     - name: grpc
       port: 4317
       targetPort: 4317
+      nodePort: {{ .Values.services.otelcollector.grpcNodePort }}
     - name: http
       port: 4318
       targetPort: 4318
+      nodePort: {{ .Values.services.otelcollector.httpNodePort }}
   selector:
     app: otelcollector

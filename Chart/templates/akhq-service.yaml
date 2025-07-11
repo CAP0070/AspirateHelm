@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: akhq
 spec:
-  type: ClusterIP
+  type: {{ .Values.services.akhq.type }}
   ports:
   - name: http
     port: 9000
     targetPort: 8080
+    nodePort: {{ .Values.services.akhq.nodePort }}
   selector:
     app: akhq 
