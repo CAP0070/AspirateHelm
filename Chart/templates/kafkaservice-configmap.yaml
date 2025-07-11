@@ -6,7 +6,7 @@ data:
   KAFKA_LOG_DIRS: /var/lib/kafka/data
   KAFKA_SCHEMA_REGISTRY_URL: SchemaRegistry:8081
   KAFKA_REST_SCHEMA_REGISTRY_URL: SchemaRegistry:8081
-  OTEL_EXPORTER_OTLP_ENDPOINT: http://aspire-dashboard:18889
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://otelcollector:4317
   OTEL_SERVICE_NAME: KafkaService
 kind: ConfigMap
 metadata:

@@ -6,10 +6,11 @@ metadata:
     app: seq
   name: seq
 spec:
+  type: {{ .Values.services.seq.type }}
   ports:
-  - name: seq
-    port: 80
-    targetPort: 5341
+    - name: http
+      port: 5341
+      targetPort: 5341
+      nodePort: {{ .Values.services.seq.nodePort }}
   selector:
     app: seq
-  type: ClusterIP

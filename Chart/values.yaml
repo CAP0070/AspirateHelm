@@ -13,4 +13,43 @@ images:
   k6: docker.io/grafana/k6:0.57.0
   aspiredashboard: mcr.microsoft.com/dotnet/aspire-dashboard:9.0
   akhq: tchiotludo/akhq:latest
+
+services:
+  calloutqueuebe:
+    type: NodePort
+    nodePort: 31315
+  akhq:
+    type: NodePort
+    nodePort: 31316
+  grafana:
+    type: NodePort
+    nodePort: 31317
+  prometheus:
+    type: NodePort
+    nodePort: 31318
+  jaeger:
+    type: NodePort
+    nodePort: 31319
+  rolloutfe:
+    type: NodePort
+    nodePort: 31320
+  otelcollector:
+    type: NodePort
+    grpcNodePort: 31321
+    httpNodePort: 31322
+  seq:
+    type: NodePort
+    nodePort: 31323
+  redis:
+    type: NodePort
+    nodePort: 31324
+  schemaregistry:
+    type: NodePort
+    nodePort: 31325
+  kafkaservice:
+    type: NodePort
+    nodePort: 31326
+  sqlserver:
+    type: NodePort
+    nodePort: 31327
   

@@ -6,13 +6,11 @@ metadata:
     app: jaeger
   name: jaeger
 spec:
+  type: {{ .Values.services.jaeger.type }}
   ports:
-  - name: jaeger-ui
-    port: 16686
-    targetPort: 0
-  - name: grpc
-    port: 4317
-    targetPort: 0
+    - name: http
+      port: 16686
+      targetPort: 16686
+      nodePort: {{ .Values.services.jaeger.nodePort }}
   selector:
     app: jaeger
-  type: ClusterIP

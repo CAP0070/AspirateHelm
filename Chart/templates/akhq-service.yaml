@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: akhq
 spec:
+  type: {{ .Values.services.akhq.type }}
   ports:
   - name: http
     port: 9000
     targetPort: 8080
-    nodePort: 31316  # Optional: static NodePort for easier access
+    nodePort: {{ .Values.services.akhq.nodePort }}
   selector:
-    app: akhq
-  type: NodePort  
+    app: akhq 

@@ -10,7 +10,7 @@ data:
   DOTNET_ENVIRONMENT: Local
   KafkaConsumerConfig__SchemaRegistryConfig__Url: SchemaRegistry:8081
   KafkaProducerConfig__SchemaRegistryConfig__Url: SchemaRegistry:8081
-  OTEL_EXPORTER_OTLP_ENDPOINT: http://aspire-dashboard:18889
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://otelcollector:4317
   OTEL_SERVICE_NAME: CalloutQueueBE
   ASPNETCORE_URLS: "http://+:5135"
 kind: ConfigMap

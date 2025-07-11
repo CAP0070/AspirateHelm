@@ -4,7 +4,6 @@ metadata:
   name: otelcollector
   labels:
     app: otelcollector
-  namespace: default
 
 data:
   otelcol-config.yml: |
