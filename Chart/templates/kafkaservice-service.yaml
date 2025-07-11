@@ -3,8 +3,8 @@ kind: Service
 metadata:
   annotations: {}
   labels:
-    app: kafka
-  name: kafka
+    app: kafkaservice
+  name: kafkaservice
 spec:
   ports:
   - name: tcp
@@ -14,5 +14,5 @@ spec:
     port: 9093
     targetPort: 0
   selector:
-    app: kafka
+    app: kafkaservice
   type: ClusterIP

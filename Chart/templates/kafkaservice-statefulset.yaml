@@ -3,28 +3,28 @@ kind: StatefulSet
 metadata:
   annotations: {}
   labels:
-    app: kafka
-  name: kafka
+    app: kafkaservice
+  name: kafkaservice
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kafka
-  serviceName: kafka
+      app: kafkaservice
+  serviceName: kafkaservice
   template:
     metadata:
       annotations: {}
       labels:
-        app: kafka
+        app: kafkaservice
     spec:
       containers:
       - args: []
         envFrom:
         - configMapRef:
-            name: kafka
-        image: '{{ .Values.images.kafka }}'
+            name: kafkaservice
+        image: '{{ .Values.images.kafkaservice }}'
         imagePullPolicy: IfNotPresent
-        name: kafka
+        name: kafkaservice
         ports:
         - containerPort: 9092
           name: tcp
@@ -32,11 +32,11 @@ spec:
           name: internal
         volumeMounts:
         - mountPath: /var/lib/kafka/data
-          name: calloutqueue-apphost-aacd00fd31-kafka-data
+          name: calloutqueue-apphost-aacd00fd31-kafkaservice-data
       terminationGracePeriodSeconds: 180
   volumeClaimTemplates:
   - metadata:
-      name: calloutqueue-apphost-aacd00fd31-kafka-data
+      name: calloutqueue-apphost-aacd00fd31-kafkaservice-data
     spec:
       accessModes:
       - ReadWriteOnce

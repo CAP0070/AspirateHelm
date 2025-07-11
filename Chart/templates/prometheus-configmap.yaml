@@ -8,3 +8,6 @@ metadata:
   labels:
     app: prometheus
   name: prometheus
+data:
+  prometheus-config.yaml: |-
+{{ .Files.Get "files/prometheus-config.yaml" | indent 4 }}
