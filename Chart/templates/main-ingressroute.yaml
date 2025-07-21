@@ -11,7 +11,7 @@ spec:
       match: PathPrefix(`/frontend`)
       services:
         - name: rolloutfe
-          port: 8980
+          port: 80
     - kind: Rule
       match: PathPrefix(`/backend`)
       services:
