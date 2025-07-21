@@ -16,7 +16,7 @@ spec:
               service:
                 name: rolloutfe
                 port:
-                  number: 80
+                  number: 8980
           - path: /backend
             pathType: Prefix
             backend:
