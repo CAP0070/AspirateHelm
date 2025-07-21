@@ -1,19 +1,18 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: main-ingressroute
-  namespace: argocd
+  name: whoami-http
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
-  entryPoints:
-    - web
-  routes:
-    - kind: Rule
-      match: PathPrefix(`/frontend`)
-      services:
-        - name: rolloutfe
-          port: 8980
-    - kind: Rule
-      match: PathPrefix(`/backend`)
-      services:
-        - name: calloutqueuebe
-          port: 5135
+  rules:
+    - host: whoami.$IP.sslip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: rolloutfe
+                port:
+                  number: 8980
